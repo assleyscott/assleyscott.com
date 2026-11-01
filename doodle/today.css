@@ -1,2 +1,3 @@
-/* Doodle: Halloween 2026. One static pumpkin on the doodle layer. No animation, no letter effects, no layout changes. */
-.dd .hw-pk{position:absolute;width:22px;height:22px;overflow:visible}
+/* Doodle: World Vegan Day 2026. One small leaf on the doodle layer, one gentle one-off settle. No layout changes. */
+.dd .wv-leaf{position:absolute;width:22px;height:22px;overflow:visible;transform-origin:20% 85%}
+@media (prefers-reduced-motion: reduce){.dd .wv-leaf{animation:none!important;transition:none!important}}
