@@ -1,9 +1,9 @@
-/* Doodle: World Vegan Day 2026 (1 Nov). ONE small flat green leaf after the name, one gentle one-off settle. No letter effects. */
-Doodle.mount({id:'vegan',from:'2026-11-01',to:'2026-11-01',tip:'World Vegan Day \u00b7 1 November',
+/* Doodle: Bittersweet Chocolate with Almonds Day 2026 (7 Nov). ONE small flat chocolate almond after the name, one gentle one-off settle. No letter effects. */
+Doodle.mount({id:'choc-almond',from:'2026-11-07',to:'2026-11-07',tip:'Bittersweet Chocolate with Almonds Day \u00b7 7 November',
  build:function(api){
-  var L=api.layer,lf=api.el('svg','wv-leaf','<path d="M4 20C4 10.5 10 4 21 3.2 21.4 13.6 15 20 6.2 20.2" fill="#4E9A4A" stroke="#16130F" stroke-width="1.4" stroke-linejoin="round"/><path d="M4 20.6C8 15 12 11 17.2 7.4" fill="none" stroke="#16130F" stroke-opacity=".45" stroke-width="1.2" stroke-linecap="round"/>',true);
-  lf.setAttribute('viewBox','0 0 24 24');L.appendChild(lf);
-  function place(){var e=api.end(),s=api.size(),h=22;lf.style.left=(e.x+6)+'px';lf.style.top=(s.h/2-h/2+1)+'px'}
+  var L=api.layer,al=api.el('svg','ca-almond','<ellipse cx="12" cy="12" rx="8.2" ry="5.4" transform="rotate(-28 12 12)" fill="#3D2314" stroke="#16130F" stroke-width="1.4"/><ellipse cx="12" cy="12" rx="5.6" ry="3.4" transform="rotate(-28 12 12)" fill="#5C3A22"/><ellipse cx="10.2" cy="10.4" rx="2.2" ry="1.1" transform="rotate(-28 12 12)" fill="#8B6340" opacity=".55"/>',true);
+  al.setAttribute('viewBox','0 0 24 24');L.appendChild(al);
+  function place(){var e=api.end(),s=api.size(),h=22;al.style.left=(e.x+6)+'px';al.style.top=(s.h/2-h/2+1)+'px'}
   api.onSync(place);place();
-  if(!api.rm)api.animate(lf,[{transform:'rotate(-14deg)',opacity:0},{transform:'rotate(0deg)',opacity:1}],{duration:900,easing:'ease-out',fill:'backwards',delay:300});
+  if(!api.rm)api.animate(al,[{transform:'translateY(-4px)',opacity:0},{transform:'translateY(0)',opacity:1}],{duration:800,easing:'ease-out',fill:'backwards',delay:280});
  }});
