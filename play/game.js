@@ -72,8 +72,24 @@ function persist(){try{localStorage.setItem(KEY,JSON.stringify(save));storage=tr
 function change(s){scene=s;cursor=0;if(!['race','final'].includes(s))particles=[];wipe=save.reduced?0:.18;keys.clear();taps.clear();sound.pause(s==='settings'||s==='intro'||s==='retry');canvas.focus({preventScroll:true});}
 // The shell has its own display: use the existing 256x240 game layout on every device.
 // DOM hardware replaces the old controls drawn inside the canvas; game/saves are unchanged.
-function resize(){portrait=false;W=256;H=GH=240;S=1;canvas.width=W;canvas.height=H;canvas.style.removeProperty('width');canvas.style.removeProperty('height');ctx.imageSmoothingEnabled=false;}
-addEventListener('resize',resize);resize();
+function resize(){
+ portrait=false;W=256;H=GH=240;S=1;
+ // CSS owns the physical shell; never clear the live frame just because browser bars resize.
+ if(canvas.width!==W||canvas.height!==H){canvas.width=W;canvas.height=H;}
+ canvas.style.removeProperty('width');canvas.style.removeProperty('height');ctx.imageSmoothingEnabled=false;
+ const display=canvas.parentElement,bezel=display.parentElement,brand=bezel.querySelector('.screen-brand'),style=getComputedStyle(bezel);
+ const availableWidth=bezel.clientWidth-parseFloat(style.paddingLeft)-parseFloat(style.paddingRight);
+ let scale=availableWidth/W;
+ const heightBound=matchMedia('(max-width:600px) and (min-height:721px), (max-height:500px) and (min-width:600px)').matches;
+ if(heightBound){const bs=getComputedStyle(brand),availableHeight=bezel.clientHeight-parseFloat(style.paddingTop)-parseFloat(style.paddingBottom)-brand.getBoundingClientRect().height-parseFloat(bs.marginTop)-parseFloat(bs.marginBottom);scale=Math.min(scale,availableHeight/H);}
+ if(!Number.isFinite(scale)||scale<=0)return;
+ // Prefer whole CSS pixels per game pixel when that leaves at most 10% unused width.
+ // Smaller screens use crisp pixelated fractional fitting rather than a tiny 1x display.
+ const integer=Math.floor(scale+1e-6);if(integer>=1&&integer/scale>=.9)scale=integer;
+ display.style.width=(Math.round(W*scale*1000)/1000)+'px';
+}
+let resizeFrame=0;function scheduleResize(){if(resizeFrame)return;resizeFrame=requestAnimationFrame(()=>{resizeFrame=0;resize();});}
+addEventListener('resize',scheduleResize);if(window.ResizeObserver)new ResizeObserver(scheduleResize).observe(canvas.closest('.screen-bezel'));resize();
 function hit(id,label,x,y,w,h,fn,key=null){hits.push({id,label,x:Math.round(x),y:Math.round(y),w,h,fn,key});}
 function button(id,label,x,y,w,fn,selected=false){box(x,y,w,13,selected?3:13,selected?49:14);text(label,x+w/2,y+3,selected?49:27,1,'center');hit(id,label,x,y,w,13,fn);}
 function wrap(s,max){s=String(s).toUpperCase();const lines=[];let line='';for(const word of s.split(' ')){if((line+' '+word).trim().length>max){if(line)lines.push(line);line=word;}else line=(line+' '+word).trim();}if(line)lines.push(line);return lines;}
