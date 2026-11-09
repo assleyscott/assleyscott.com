@@ -62,7 +62,10 @@ html.still body{animation:none!important}
 
 /* t259u: labelled CUSTOMISE key in the bezel (visible on every viewport, 44px target) */
 .screen-brand{align-items:center}.screen-brand i{display:none}
-.style-key{margin-left:auto;display:inline-flex;align-items:center;gap:6px;min-height:44px;min-width:44px;padding:0 12px;border:0;border-radius:0;background:var(--bt,#292c29);color:var(--bt-ink,#b9bfaa);font:700 11px/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:1px;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;
+.sound-key,.style-key{display:inline-flex;align-items:center;gap:6px;min-height:44px;min-width:44px;padding:0 12px;border:0;border-radius:0;background:var(--bt,#292c29);color:var(--bt-ink,#b9bfaa);font:700 11px/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:1px;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;
  clip-path:polygon(0 3px,3px 3px,3px 0,calc(100% - 3px) 0,calc(100% - 3px) 3px,100% 3px,100% calc(100% - 3px),calc(100% - 3px) calc(100% - 3px),calc(100% - 3px) 100%,3px 100%,3px calc(100% - 3px),0 calc(100% - 3px));box-shadow:inset 0 -3px 0 var(--bt-lo,#161c16),inset 0 3px 0 var(--bt-hi,#4b5145)}
-.style-key:active{box-shadow:inset 0 3px 0 var(--bt-lo,#161c16)}
-.style-key:focus-visible{outline:3px solid var(--focus,#f9eed2);outline-offset:2px}
+.sound-key{margin-left:auto}.style-key{margin-left:6px}.sound-key b{font:inherit;color:var(--focus,#f9eed2)}.sound-key[aria-pressed=false] b{opacity:.6}
+.sound-key:active,.style-key:active{box-shadow:inset 0 3px 0 var(--bt-lo,#161c16)}
+.sound-key:focus-visible,.style-key:focus-visible{outline:3px solid var(--focus,#f9eed2);outline-offset:2px}
+
+@media (max-width:400px){.screen-brand span{display:none}.sound-key,.style-key{padding:0 9px;font-size:10px}}
