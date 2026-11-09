@@ -42,5 +42,7 @@ export function makeArt(g){const {R,text,line,sprite,tri,tile,box}=g;
  function crowd(x,y,frame=0){for(let i=0;i<5;i++){const xx=x+i*7;R(xx+2,y,3,3,48);R(xx+1,y+3,5,4,20);R(xx+1,y+7,2,2,0);R(xx+4,y+7,2,2,0);if(i%2===frame%2){R(xx-1,y+1,2,3,48);R(xx+6,y+1,2,3,48);}}}
  function gantry(x,y,label='START'){R(x,y-29,3,29,48);R(x+45,y-29,3,29,48);R(x-2,y-32,52,11,0);R(x-2,y-32,52,2,20);text(label,x+24,y-28,27,1,'center');for(let i=0;i<12;i++)R(x+i*4,y,3,2,i%2?27:0);}
  function companion(index,x,y,frame=0){if(index===2){const bird=outline(grid(16,16,r=>{r(6,2,5,6,2);r(9,4,4,3,3);r(6,8,4,6,2);r(3,6,3,6,3);r(1,9,3,4,2);r(7,4,1,1,1);r(8,13,1,3,1);r(9,14,3,1,3);}));sprite(bird,[0,0,15,49],x,y);}else if(index<2){const rows=outline(grid(24,16,r=>{r(3,6,index===0?13:15,6,2);r(15,2,index===0?5:7,7,2);r(19,6,4,4,3);r(15,1,3,3,2);r(18,4,1,1,1);for(const xx of [5,15])r(xx,11,2,index===0?5:4,2);r(1,3,2,6,2);}));sprite(rows,[0,0,index===0?14:9,48],x,y);}else{const paw=['0011001100110000','0033003300330000','0011001100110000','0000000000000000','0000111111000000','0001333333100000','0013333333310000','0013333333310000','0001111111100000'];sprite(paw,[0,0,20,[49,42,29,38,32,14,34,27][(index-3)%8]],x,y+3);}}
- return{dog,plane,vessel,pine,building,cloud,bird,terrain,water,bridge,manor,place,crowd,gantry,companion};
+ // Rival racers reuse Romeo's frames with their own coat palette.
+ function rival(x,y,pal,pose='run',frame=0){sprite(dogFrame(pose,frame),pal,Math.round(x),Math.round(y));}
+ return{dog,rival,plane,vessel,pine,building,cloud,bird,terrain,water,bridge,manor,place,crowd,gantry,companion};
 }
