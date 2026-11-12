@@ -1,3 +1,3 @@
-/* Doodle: Remembrance Day 2026. One small poppy on the doodle layer, one gentle one-off fade. No layout changes. */
-.dd .rd-poppy{position:absolute;width:22px;height:22px;overflow:visible}
-@media (prefers-reduced-motion: reduce){.dd .rd-poppy{animation:none!important;transition:none!important}}
+/* Doodle: Auguste Rodin's birthday 2026. One small bronze chisel on the doodle layer, one gentle one-off fade. No layout changes. */
+.dd .rb-chisel{position:absolute;width:22px;height:22px;overflow:visible}
+@media (prefers-reduced-motion: reduce){.dd .rb-chisel{animation:none!important;transition:none!important}}
