@@ -127,6 +127,6 @@ button:focus{outline:none}button:focus-visible,a:focus-visible,input:focus-visib
 @media (pointer:coarse),(max-width:700px){#minimap{width:104px;height:104px;bottom:calc(52px + var(--safe-b))}#pup-card{top:calc(62px + var(--safe-t));min-width:0;padding:8px 10px}#act2{bottom:calc(180px + var(--safe-b))}#act2 span{display:none}}
 
 @media (min-width:561px){#toast{top:auto;bottom:calc(132px + var(--safe-b,0px));transform:translate(-50%,12px)}#toast.on{transform:translate(-50%,0)}}
-/* photo mode (P): HUD fades away, camera drifts round the car */
+/* photo mode (C): HUD fades away, camera drifts round the car */
 body.photo #hud,body.photo #energy,body.photo #wanted,body.photo #race-hud,body.photo #minimap,body.photo #pup-card,body.photo #joy,body.photo #toast{opacity:0!important;pointer-events:none;transition:opacity .4s}
-body.photo::after{content:'PHOTO MODE · P TO EXIT';position:fixed;left:50%;bottom:18px;transform:translateX(-50%);font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#fff6e6;background:rgba(22,19,15,.55);padding:6px 12px;border-radius:999px;pointer-events:none}
+body.photo::after{content:'PHOTO MODE · C TO EXIT';position:fixed;left:50%;bottom:18px;transform:translateX(-50%);font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#fff6e6;background:rgba(22,19,15,.55);padding:6px 12px;border-radius:999px;pointer-events:none}
